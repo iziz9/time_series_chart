@@ -1,8 +1,11 @@
-function App() {
+import GraphContainer from './graphs/GraphContainer';
 
-  return (
-<div></div>
-  )
+function App() {
+	return (
+		<>
+			<GraphContainer />
+		</>
+	);
 }
 
-export default App
+export default App;
