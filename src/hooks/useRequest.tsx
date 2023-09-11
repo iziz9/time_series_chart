@@ -10,7 +10,7 @@ export const useRequest = () => {
 			setIsLoading(true);
 			try {
 				const res = await httpClient.get();
-				if (res.status === 200) return false;
+				if (res.status !== 200) return false;
 
 				res.data && setChartData(res.data);
 			} catch (err) {
