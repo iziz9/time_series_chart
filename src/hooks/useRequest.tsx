@@ -1,20 +1,26 @@
 import { useEffect, useState } from 'react';
-import { httpClient } from '../api/request';
+import { requestGetChartData } from '../api/request';
+import { transformData } from '../utils/transformData';
 
 export const useRequest = () => {
-	const [chartData, setChartData] = useState({});
+	const [chartData, setChartData] = useState<IChartDataItem[]>([]);
 	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
 		const fetchData = async () => {
 			setIsLoading(true);
 			try {
-				const res = await httpClient.get();
-				if (res.status !== 200) return false;
+				const res = await requestGetChartData();
 
-				res.data && setChartData(res.data);
+				if (res.status !== 200) {
+					throw new Error();
+				}
+
+				const { response } = res.data;
+				const transformedData = transformData(response);
+				setChartData(transformedData);
 			} catch (err) {
-				console.info(err);
+				alert(err);
 			} finally {
 				setIsLoading(false);
 			}

@@ -14,4 +14,8 @@ class HttpClient {
 	}
 }
 
-export const httpClient = new HttpClient();
+const httpClient = new HttpClient();
+
+export const requestGetChartData = () => {
+	return httpClient.get();
+};
