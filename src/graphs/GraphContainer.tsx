@@ -65,11 +65,9 @@ const GraphContainer = () => {
 };
 
 const Container = styled.div`
-	position: relative;
-	width: 1024px;
-	height: 600px;
-	margin: auto;
-	background-color: skyblue;
+	background-color: #a9d5e7;
+	border-radius: 40px;
+	padding: 10px;
 
 	title {
 		font-size: 30px;

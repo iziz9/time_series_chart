@@ -1,10 +1,11 @@
-import GraphContainer from './graphs/GraphContainer';
+import { BrowserRouter } from 'react-router-dom';
+import Router from './Router';
 
 function App() {
 	return (
-		<>
-			<GraphContainer />
-		</>
+		<BrowserRouter>
+			<Router />
+		</BrowserRouter>
 	);
 }
 
