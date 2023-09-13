@@ -82,6 +82,7 @@ $ npm run dev
 ## 프로젝트 설명
 > 프로젝트 폴더 내에 `.json` 형식의 목데이터를 저장하여 사용합니다.
 
+<img src="./public/images/preview.gif" alt="미리보기" />
 
 ### 📌 api 요청 관리 - 1
 
