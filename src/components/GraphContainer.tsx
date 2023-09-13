@@ -15,7 +15,7 @@ import {
 import CustomTooltip from './CustomTooltip';
 import { COLORS } from '../constants/styleConstants';
 import Filter from './Filter';
-import Loading from '../loading/Loading';
+import Loading from './Loading';
 import { IGraphContainerProps } from '../types';
 import CustomAreaDot from './CustomAreaDot';
 
