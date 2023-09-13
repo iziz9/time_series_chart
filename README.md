@@ -1,5 +1,5 @@
 # 4주차 개인과제
-프리온보딩 4주차에 진행한 개인과제입니다.
+프리온보딩 4주차에 진행한 복합 차트 구현 과제입니다.
 
 기간 : 2023.09.10. ~ 2023.09.13
 
@@ -31,8 +31,33 @@ $ npm run dev
 ## 프로젝트 구조
 
 ```js
+📂 public/
+└── data/
+    └── mockData.json
 📂 src/
-├── 
+├── api/
+│   └── request.ts
+├── components/
+│   ├── CustomAreaDot.tsx
+│   ├── CustomTooltip.tsx
+│   ├── Filter.tsx
+│   ├── GraphContainer.tsx
+│   └── Loading.tsx
+├── constants/
+│   ├── icon.tsx
+│   └── styleConstants.ts
+├── hooks/
+│   └── useRequest.tsx
+├── pages/
+│   ├── ChartPage.tsx
+│   └── ErrorPage.tsx
+├── utils/
+│   └── transformData.ts
+├── app.tsx
+├── globalStyles.ts
+├── main.tsx
+├── Router.tsx
+└── types.ts
 ```
 
 ---
