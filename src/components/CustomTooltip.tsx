@@ -1,11 +1,16 @@
-import { TooltipProps } from 'recharts';
 import { styled } from 'styled-components';
 import { COLORS } from '../constants/styleConstants';
+import { ICustomTooltipProps } from '../types';
+import { useEffect } from 'react';
 
-const CustomTooltip = ({ payload, active }: TooltipProps<string, number>) => {
+const CustomTooltip = ({ payload, active, setDotId }: ICustomTooltipProps) => {
 	const [bar, area] = payload;
 
-	if (active && payload && payload.length)
+	useEffect(() => {
+		area && setDotId(area.payload.id);
+	}, [area, setDotId]);
+
+	if (active && payload && payload.length) {
 		return (
 			<ToolTipContainer>
 				<p className="district">{bar.payload.id}</p>
@@ -21,6 +26,7 @@ const CustomTooltip = ({ payload, active }: TooltipProps<string, number>) => {
 				</div>
 			</ToolTipContainer>
 		);
+	}
 };
 
 const ToolTipContainer = styled.div`

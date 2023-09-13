@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { requestGetChartData } from '../api/request';
 import { transformData } from '../utils/transformData';
+import { IChartDataItem } from '../types';
 
 export const useRequest = () => {
 	const [chartData, setChartData] = useState<IChartDataItem[]>([]);

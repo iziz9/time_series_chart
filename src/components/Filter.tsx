@@ -1,5 +1,6 @@
 import { styled } from 'styled-components';
 import { COLORS } from '../constants/styleConstants';
+import { IFilterProps } from '../types';
 
 const Filter = ({ chartData, setSelectedDistrict }: IFilterProps) => {
 	const idSet = new Set();
