@@ -24,11 +24,12 @@ const CustomTooltip = ({ payload, active }: TooltipProps<string, number>) => {
 };
 
 const ToolTipContainer = styled.div`
-	width: 200px;
-	height: 100px;
-	background-color: white;
-	border: 1px solid #c8c3c374;
+	width: 180px;
+	height: 90px;
+	background-color: #ffffffdd;
+	border: 1px solid ${COLORS.border};
 	border-radius: 16px;
+	box-shadow: 3px 3px 3px ${COLORS.border};
 	padding: 10px;
 	display: flex;
 	flex-direction: column;
@@ -37,7 +38,7 @@ const ToolTipContainer = styled.div`
 	.district {
 		font-size: 18px;
 		font-weight: 700;
-		color: ${COLORS.green};
+		color: ${COLORS.button};
 		margin-bottom: 18px;
 	}
 

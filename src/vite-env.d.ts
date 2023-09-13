@@ -16,3 +16,8 @@ interface IChartDataItem {
 	value_area: number;
 	value_bar: number;
 }
+
+interface IFilterProps {
+	chartData: IChartDataItem[];
+	setSelectedDistrict: React.Dispatch<React.SetStateAction<string>>;
+}

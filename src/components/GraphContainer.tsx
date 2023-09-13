@@ -14,35 +14,15 @@ import {
 } from 'recharts';
 import CustomTooltip from './CustomTooltip';
 import { COLORS } from '../constants/styleConstants';
+import Filter from './Filter';
 
 const GraphContainer = ({ chartData }: { chartData: IChartDataItem[] }) => {
-	const [selectedDistrict, setSelectedDistrict] = useState('');
-
-	const idSet = new Set();
-	chartData.map((item) => {
-		idSet.add(item.id);
-	});
-	const chartIds = [...idSet];
-
-	const resetFilter = () => {
-		setSelectedDistrict('');
-	};
+	const [selectedDistrict, setSelectedDistrict] = useState('전체');
 
 	return (
 		<Container>
 			<FilterSection>
-				<Button
-					onClick={() => {
-						resetFilter();
-					}}
-				>
-					전체
-				</Button>
-				{chartIds.map((id) => (
-					<Button key={id as string} onClick={() => setSelectedDistrict(id as string)}>
-						{id as string}
-					</Button>
-				))}
+				<Filter chartData={chartData} setSelectedDistrict={setSelectedDistrict} />
 			</FilterSection>
 			{chartData && (
 				<>
@@ -59,7 +39,7 @@ const GraphContainer = ({ chartData }: { chartData: IChartDataItem[] }) => {
 									left: 20,
 								}}
 							>
-								<CartesianGrid stroke="#f5f5f5" />
+								<CartesianGrid stroke={COLORS.grid} />
 								<XAxis dataKey="time" scale="band" />
 								<YAxis yAxisId="left" label={{ value: 'value_bar', offset: 30, angle: 0, position: 'top' }} />
 								<YAxis
@@ -69,19 +49,29 @@ const GraphContainer = ({ chartData }: { chartData: IChartDataItem[] }) => {
 								/>
 								<Tooltip content={<CustomTooltip />} />
 								<Legend />
-								<Bar dataKey="value_bar" barSize={20} fill="#1a9ca3eb" yAxisId="left" />
-								{chartData.map((entry, index) => (
-									<Cell
-										key={index}
-										fill={entry.id === selectedDistrict ? COLORS.barHightlight : COLORS.bar}
-									/>
-								))}
+								<Bar
+									dataKey="value_bar"
+									barSize={20}
+									fill={COLORS.bar}
+									yAxisId="left"
+									onClick={(barData) => {
+										setSelectedDistrict(barData.id);
+									}}
+								>
+									{chartData.map((item, index) => (
+										<Cell
+											key={index}
+											fill={item.id === selectedDistrict ? COLORS.barHightlight : COLORS.bar}
+										/>
+									))}
+								</Bar>
 								<Area
 									type="monotone"
 									dataKey="value_area"
 									fill={COLORS.area}
 									stroke={COLORS.area}
 									yAxisId="right"
+									dot={{ stroke: COLORS.areaHightlight, strokeWidth: 2 }}
 								/>
 							</ComposedChart>
 						</ResponsiveContainer>
@@ -111,12 +101,6 @@ const ChartSection = styled.section`
 	tspan {
 		font-size: 14px;
 	}
-`;
-const Button = styled.button`
-	width: 100px;
-	height: 30px;
-	background-color: ${COLORS.green};
-	color: white;
 `;
 
 export default GraphContainer;
