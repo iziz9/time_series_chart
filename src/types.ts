@@ -19,6 +19,7 @@ export interface IChartDataItem {
 
 export interface IFilterProps {
 	chartData: IChartDataItem[];
+	selectedDistrict: string;
 	setSelectedDistrict: React.Dispatch<React.SetStateAction<string>>;
 }
 

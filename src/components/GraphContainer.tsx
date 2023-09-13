@@ -26,7 +26,11 @@ const GraphContainer = ({ chartData, isLoading }: IGraphContainerProps) => {
 	return (
 		<Container>
 			<FilterSection>
-				<Filter chartData={chartData} setSelectedDistrict={setSelectedDistrict} />
+				<Filter
+					chartData={chartData}
+					selectedDistrict={selectedDistrict}
+					setSelectedDistrict={setSelectedDistrict}
+				/>
 			</FilterSection>
 			{isLoading && <Loading />}
 			{!chartData && <NoData>표시할 데이터가 없습니다.</NoData>}
